@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Name[] persons = new Name[3];
-        for (int io = 1; io <= 20; io++) {
+        for (int io = 0; io < 10; io++) {
             System.out.println("\nВведите номер задачи (1-6): ");
             int exr = in.nextInt();
             in.nextLine(); // Очистка буфера после ввода числа
@@ -15,16 +15,17 @@ public class Main {
                     for (int i = 0; i < 3; i++) {
                         out.println("ФИО " + (i+1) + "-ого человека");
                         persons[i] = new Name();
-                        System.out.println("Введите фамилию человека: ");
+                        out.println("Введите фамилию человека: ");
                         persons[i].setName2(in.nextLine());
-                        System.out.println("Введите имя: ");
+                        out.println("Введите имя: ");
                         persons[i].setName1(in.nextLine());
-                        System.out.println("Введите отчество: ");
+                        out.println("Введите отчество: ");
                         persons[i].setOtchestvo(in.nextLine());
                     }
 
                     // Выводим введенные данные
-                    System.out.println("\nВведенные данные:");
+                    out.println("\nВведенные данные:");
+
                     int cnt = 1;
                     for (Name person : persons) {
                         System.out.println(cnt + " - ФИО - " + person);
@@ -32,29 +33,24 @@ public class Main {
                     }
                     break;
                 case 2:
-                    Time time = new Time();
                     out.println("\nВведите количество секунд, чтобы узнать время: ");
-                    if (in.hasNextInt()) {  // Проверка, является ли ввод целым числом
-                        int input = in.nextInt();
-                        if (input > -1) {  // Проверка, что число больше или равно 0
-                            time.setSecundtime(input);
+                    Time time = new Time(in.nextInt());
+                        if (time.getSecundtime() > -1) {  // Проверка, что число больше или равно 0
                             out.println("\nВремя: ");
                             out.println(time);
                         } else {
                             out.println("Некорректный ввод! Число должно быть неотрицательным.");
                         }
-                    } else {
-                        out.println("Некорректный ввод! Пожалуйста, введите целое число.");
-                        in.next();  // Сбрасываем некорректный ввод
-                    }
                     break;
                 case 3:
                     //создаем отдел it
-                    otdel_3exr it_otdel = new otdel_3exr("IT");
+                    out.println("Введите название отдела: ");
+                    otdel_3exr it_otdel = new otdel_3exr(in.nextLine());
                     // создаем сотрудников
                     Sotrudnik_3exr sot_1_koz = new Sotrudnik_3exr("Козлов", it_otdel);
                     Sotrudnik_3exr sot_2_petr = new Sotrudnik_3exr("Петров", it_otdel);
                     Sotrudnik_3exr sot_3_sid = new Sotrudnik_3exr("Сидоров", it_otdel);
+
                     //назначаем козлова начальником
                     it_otdel.setBoss(sot_1_koz);
 
@@ -76,7 +72,7 @@ public class Main {
                     manager = new sotrud_4exr(managerName, department);
 
                     // Добавление сотрудников
-                    for (int i = 0; i < 3; i++) { // Для примера добавим двух сотрудников
+                    for (int i = 0; i < 3; i++) {
                         out.print("Введите имя " + (i+1) + "- ого сотрудника: ");
                         String employeeName = in.nextLine();
                         sotrud_4exr employee = new sotrud_4exr(employeeName, department);
@@ -89,17 +85,18 @@ public class Main {
                         out.println(emp.getNames());
                     }
 
-                    // Вывод списка сотрудников для менеджера
+                    // Вывод списка сотрудников для начальника
                     out.println("\nСписок сотрудников отдела ("+department.getName()+") для " + manager.getNames() + "a :");
                     for (sotrud_4exr emp : manager.getfgh()) {
                         out.println(emp.getNames());
                     }
                     break;
                 case 5:
-                    TTimee time1 = new TTimee(10000000);
-                    out.println("Время ("+time1.getTottalSeconds()+" секунд): " + time1);
-
-                    TTimee time2 = new TTimee(58, 40, 23);
+                    out.println("Введите кол-во секунд, чтобы создать время ");
+                    TTimee time1 = new TTimee(in.nextInt());
+                    out.println("Время секунды): " + time1);
+                    out.println("Введите кол-во часов, минут, секунд, чтобы создать время ");
+                    TTimee time2 = new TTimee(in.nextInt(), in.nextInt(), in.nextInt());
                     out.println("Время ("+time2.getHours()+" часа, "+time2.getMinutes()+" минуты, "+time2.getSeconds()+" секунд): " + time2);
                     break;
                 case 6:
