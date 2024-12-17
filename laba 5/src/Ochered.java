@@ -3,11 +3,11 @@ import java.util.Queue;
 import java.util.List;
 
 public class Ochered {
-    public static Queue<Integer> buildQueue(List<Integer> list){
-        Queue<Integer> q = new LinkedList<>();
+    public static <T> Queue<T> buildQueue(List<T> list) {
+        Queue<T> q = new LinkedList<>();
 
         // Добавляем элементы в прямом порядке
-        for (int element : list) {
+        for (T element : list) {
             q.add(element);
         }
 

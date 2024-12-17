@@ -1,7 +1,7 @@
 
 public class mewmew {
     public static void meowsCare(Mewing cat) {
-        cat = new Myabox(cat);//делаем объект типа Myabox
+        cat = new Myabox(cat);//создаем объект типа Myabox
 
         Myabox counter = (Myabox) cat;
 

@@ -14,29 +14,24 @@ public class Main {
             in.nextLine(); // Очистка буфера после ввода числа
             switch (exr) {
                 case 1:
-                    for (int i = 0; i < 3; i++) {
-                        out.println("\nВведите числитель и знаменатель для дроби: ");
-                        int ch = in.nextInt();
-                        int zz = in.nextInt();
-                        Inter_drob dr = new drob(ch, zz); // Создаем дробь 3/4
-                        out.println(dr);
-                        System.out.println("Вещественное значение: " + dr.getValue());
-                        System.out.println("Кэшированное значение: " + dr.getValue());
 
-                        out.println("\nИзмените числитель и знаменатель для дроби: ");
-                        int c = in.nextInt();
-                        int z = in.nextInt();
-                        dr.setZZnamen(c, z);
-                        out.println(dr);
-                        System.out.println("Вещественное значение: " + dr.getValue());
-                        System.out.println("Кэшированное значение: " + dr.getValue());
+                        Inter_drob decimal1 = new Drob(1, 2);
+                        Inter_drob decimal2 = new Drob(-5, -2);
 
-                        out.println("\nСравним первую дробь и измененную: ");
-                        Inter_drob rd = new drob(ch, zz);
-                        out.println(dr);
-                        out.println(rd);
-                        out.println("Дроби равны? " + dr.equals(rd));
-                    }
+                        Kesh decimalCache1 = new Kesh(decimal1);
+                        out.println(decimalCache1.getValue());
+                        out.println(decimalCache1.getValue());
+                        out.println(decimalCache1.getValue());
+
+
+                        decimalCache1.setZZnamen(3,5);
+                        out.println(decimalCache1.getValue());
+                        out.println(decimalCache1.getValue());
+                        out.println(decimalCache1.getValue());
+
+                        out.println("Равны ли дроби? " + decimal1.equals(decimal2));
+
+                    break;
                 case 2:
                     Mewing barsik = new Cat("Барсик");
                     Mewing nesi = new Cat("Неси");
@@ -45,6 +40,7 @@ public class Main {
                     mewmew.meowsCare(barsik);
                     mewmew.meowsCare(nesi);
                     mewmew.meowsCare(ser);
+                    break;
                 case 3:
                     List<Integer> L1 = new ArrayList<>();
                     List<Integer> L2 = new ArrayList<>();
@@ -70,6 +66,7 @@ public class Main {
                     out.println("L2: " + L2);
                     // Выводим результат
                     System.out.println("Список L (элементы без дублирования): " + L);
+                    break;
                 case 4:
                 case 5:
                     String file = "text_for_laba5.txt";
@@ -86,12 +83,14 @@ public class Main {
                     } catch (IOException e) {
                         System.out.println("Ошибка при чтении файла: " + e.getMessage());
                     }
+                    break;
                 case 6:
                     List<Integer> LL = Arrays.asList(1, 2, 3);
 
                     Queue<Integer> ochered = Ochered.buildQueue(LL);
                     out.println("Исходный список: " + LL);
                     out.println("Очередь: " + ochered);
+                    break;
             }
 
 
